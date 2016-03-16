@@ -1,6 +1,7 @@
 local Snake = require("app.Snake")
 local Apple = require("app.Apple")
 local Fence = require("app.Fence")
+local gameSetting = require("app.gameSetting")
 
 local MainScene = class("MainScene", function()
     return display.newScene("MainScene")
@@ -50,6 +51,8 @@ function MainScene:onEnter()
     self:CreateScoreBoard()
     self.fence = Fence.new(cBound, self)
 	--self.fence:gameSet(10, 0.3)
+	--local increment, cMoveSpeed = self.fence:gameGet()
+	local increment,cMoveSpeed = gameSetting.gameGet()
 	
     self:Reset()
     -- self.snake = Snake.new(self)
@@ -86,7 +89,7 @@ function MainScene:onEnter()
 			if self.apple:CheckCollide(headX, headY) then
 				self.apple:Generate()
 				self.snake:Grow()
-				self.score = self.score + self.fence.increment
+				self.score = self.score + increment
 				self:setScore(self.score)
 			end
 
@@ -103,7 +106,7 @@ function MainScene:onEnter()
 
     --self:ProcessInput()
 
-    cc.Director:getInstance():getScheduler():scheduleScriptFunc(tick, self.fence.cMoveSpeed, false)
+    cc.Director:getInstance():getScheduler():scheduleScriptFunc(tick, cMoveSpeed, false)
 
 end
 

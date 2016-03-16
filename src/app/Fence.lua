@@ -14,8 +14,8 @@ end
 function Fence:ctor(bound, node)
 	
 	self.bound = bound
-	self.increment = 1
-	self.cMoveSpeed = 0.3
+	-- self.increment = 1
+	-- self.cMoveSpeed = 0.3
 
 	if bound then
 
@@ -41,12 +41,21 @@ function Fence:ctor(bound, node)
 
 end
 
-function Fence:gameSet(i, s)
+-- function Fence:gameSet(i, s)
 
-	self.increment = i;
-	self.cMoveSpeed = s;
+-- 	self.increment = i;
+-- 	self.cMoveSpeed = s;
+	
+-- end
 
-end
+-- function Fence:gameGet()
+
+-- 	local increment = self.increment or 1
+-- 	local cMoveSpeed = self.cMoveSpeed or 0.3
+
+-- 	return increment, cMoveSpeed
+
+-- end
 
 function Fence:CheckCollide(x, y)
 
